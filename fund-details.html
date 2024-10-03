@@ -28,44 +28,46 @@
         }
 
         .chart-container {
-            width: 80%;
-            margin: 50px auto;
+            width: 90%;
+            margin: 20px auto;
             text-align: center;
         }
 
         .chart-container h2 {
-            font-size: 24px;
-            margin-bottom: 20px;
+            font-size: 22px;
+            margin-bottom: 15px;
             color: #4CAF50;
         }
 
         .chart-wrapper {
             display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
+            flex-direction: column;
+            align-items: center;
         }
 
         .chart {
-            width: 45%;
-            margin: 20px;
+            width: 100%;
+            max-width: 400px;
+            margin: 10px 0;
         }
 
         .table-section {
-            width: 80%;
+            width: 95%;
             margin: 0 auto;
             text-align: center;
-            padding: 50px 20px;
+            padding: 30px 10px;
         }
 
         .fund-table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 30px;
+            margin-top: 20px;
+            font-size: 14px;
         }
 
         .fund-table th, .fund-table td {
             border: 1px solid #ddd;
-            padding: 12px;
+            padding: 10px;
             text-align: left;
         }
 
@@ -84,7 +86,7 @@
 
         .view-selector {
             margin: 20px 0;
-            font-size: 18px;
+            font-size: 16px;
             padding: 10px;
             background-color: #4CAF50;
             color: white;
@@ -93,8 +95,9 @@
         }
 
         .dropdown {
-            width: 200px;
-            font-size: 18px;
+            width: 100%;
+            max-width: 300px;
+            font-size: 16px;
             padding: 10px;
             margin-bottom: 20px;
             border-radius: 5px;
@@ -105,6 +108,39 @@
             color: white;
             padding: 20px;
             text-align: center;
+        }
+
+        /* Mobile Styles */
+        @media only screen and (max-width: 768px) {
+            .chart-wrapper {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .fund-table {
+                font-size: 12px;
+            }
+
+            .chart-container h2 {
+                font-size: 18px;
+            }
+
+            .header-title {
+                font-size: 24px;
+            }
+
+            .dropdown {
+                width: 80%;
+            }
+
+            .chart {
+                max-width: 100%;
+                margin: 0 auto;
+            }
+
+            .table-section {
+                padding: 20px 10px;
+            }
         }
     </style>
 </head>
@@ -250,11 +286,12 @@
                 tableBody.innerHTML += row;
                 totalFunds += yearlyData[year].total;
             });
+
         } else {
             // Display month-wise breakdown for the selected year
             chartTitle.textContent = `Total Funds Raised in ${selectedYear}`;
-            tableTitle.textContent = `${selectedYear} Monthly Breakdown of Funds`;
-
+            tableTitle.textContent = `Month-wise Breakdown of Funds for ${selectedYear}`;
+            
             yearlyData[selectedYear].months.forEach((month, index) => {
                 const row = `<tr>
                                 <td>${selectedYear}</td>
