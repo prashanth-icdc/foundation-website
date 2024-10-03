@@ -43,6 +43,11 @@
             text-decoration: underline;
         }
 
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
         /* Hero Section */
         .hero {
             background: url('school-hero.jpg') no-repeat center center/cover;
@@ -64,6 +69,7 @@
         .hero p {
             font-size: 20px;
             max-width: 600px;
+            margin: 0 auto;
         }
 
         /* About Us Section */
@@ -92,11 +98,14 @@
             padding: 40px 20px;
             display: flex;
             justify-content: space-around;
+            flex-wrap: wrap;
             text-align: center;
         }
 
         .stat-item {
             margin: 10px;
+            flex: 1;
+            min-width: 150px;
         }
 
         .stat-item h3 {
@@ -183,6 +192,98 @@
             cursor: pointer;
         }
 
+        /* Responsive styling */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+
+            .foundation-name {
+                font-size: 20px;
+            }
+
+            nav a {
+                font-size: 14px;
+                padding: 0 10px;
+            }
+
+            .statistics {
+                flex-direction: column;
+            }
+
+            .stat-item h3 {
+                font-size: 24px;
+            }
+
+            .stat-item p {
+                font-size: 16px;
+            }
+
+            .about-us h2, .fund-info h2 {
+                font-size: 28px;
+            }
+
+            .about-us p, .fund-info .total-funds {
+                font-size: 16px;
+            }
+
+            .fund-info button {
+                font-size: 16px;
+                padding: 8px 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                height: 300px;
+            }
+
+            .hero h1 {
+                font-size: 28px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            nav a {
+                padding: 0 5px;
+                font-size: 12px;
+            }
+
+            .foundation-name {
+                font-size: 18px;
+            }
+
+            .statistics {
+                flex-direction: column;
+            }
+
+            .stat-item h3 {
+                font-size: 22px;
+            }
+
+            .stat-item p {
+                font-size: 14px;
+            }
+
+            .about-us h2, .fund-info h2 {
+                font-size: 24px;
+            }
+
+            .about-us p, .fund-info .total-funds {
+                font-size: 14px;
+            }
+
+            .fund-info button {
+                font-size: 14px;
+                padding: 6px 12px;
+            }
+        }
     </style>
 </head>
 <body>
