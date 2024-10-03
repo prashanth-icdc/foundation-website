@@ -4,153 +4,254 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Foundation School Donation Portal</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f0f0f0;
+            font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
         }
+
+        /* Header styling */
         header {
-            background-color: #4CAF50;
+            background: linear-gradient(to right, #4CAF50, #3E8E41);
             color: white;
-            padding: 40px;
-            text-align: center;
-            background-image: url('path-to-header-image.jpg');
-            background-size: cover;
-            background-position: center;
-        }
-        header h1 {
-            font-size: 50px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
-        }
-        .content {
+            padding: 20px 10px;
             display: flex;
-            flex-direction: column;
+            justify-content: space-between;
             align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .foundation-name {
+            font-size: 24px;
+            font-weight: bold;
+            margin-left: 20px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0 15px;
+            font-size: 16px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: url('school-hero.jpg') no-repeat center center/cover;
+            height: 400px;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
             padding: 20px;
         }
-        section {
-            margin: 20px;
-            padding: 20px;
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            max-width: 600px;
+        }
+
+        /* About Us Section */
+        .about-us {
             background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            max-width: 1000px;
+            padding: 50px 20px;
             text-align: center;
         }
-        section img {
-            width: 100%;
-            height: auto;
-            border-radius: 10px;
-        }
-        h2 {
+
+        .about-us h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
             color: #4CAF50;
         }
-        p {
+
+        .about-us p {
             font-size: 18px;
+            max-width: 800px;
+            margin: 0 auto;
             line-height: 1.6;
+        }
+
+        /* Statistics Section */
+        .statistics {
+            background-color: #e9f5ea;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+        }
+
+        .stat-item {
+            margin: 10px;
+        }
+
+        .stat-item h3 {
+            font-size: 28px;
+            color: #4CAF50;
+            margin-bottom: 10px;
+        }
+
+        .stat-item p {
+            font-size: 18px;
             color: #555;
         }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-        table, th, td {
-            border: 1px solid #ddd;
-        }
-        th, td {
-            padding: 12px;
-            text-align: left;
-        }
-        th {
-            background-color: #4CAF50;
-            color: white;
-        }
-        .btn {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 15px 30px;
-            background-color: #4CAF50;
-            color: white;
+
+        /* Fund Information */
+        .fund-info {
             text-align: center;
-            text-decoration: none;
+            padding: 50px 20px;
+        }
+
+        .fund-info h2 {
+            font-size: 32px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .fund-info .total-funds {
+            font-size: 24px;
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+
+        .fund-info button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
             font-size: 18px;
-            border-radius: 8px;
+            margin-top: 10px;
         }
-        .btn:hover {
-            background-color: #45a049;
+
+        .fund-info button:hover {
+            background-color: #388E3C;
         }
-        footer {
-            background-color: #4CAF50;
+
+        /* Contact Details */
+        .contact-info {
+            background-color: #333;
             color: white;
-            padding: 10px;
+            padding: 50px 20px;
             text-align: center;
-            margin-top: 40px;
         }
+
+        .contact-info h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .contact-info p {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        footer a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .social-icons img {
+            width: 30px;
+            margin: 0 10px;
+            cursor: pointer;
+        }
+
     </style>
 </head>
 <body>
 
 <header>
-    <h1>Foundation School Donation Portal</h1>
+    <div class="foundation-name">Foundation Name</div>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#about">About Us</a>
+        <a href="#funds">Funds</a>
+        <a href="#contact">Contact</a>
+    </nav>
 </header>
 
-<div class="content">
-
-    <section>
-        <h2>About Our School</h2>
-        <img src="path-to-school-image.jpg" alt="Government School Kids">
-        <p>Our foundation supports ABC School, a nonprofit organization dedicated to providing quality education to underprivileged children. Established in 2005, the school serves over 500 students annually, offering a wide range of educational programs aimed at empowering young minds.</p>
-    </section>
-
-    <section>
-        <h2>Monthly Donations Summary</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Month</th>
-                    <th>Number of Donations</th>
-                    <th>Total Amount (USD)</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>January</td>
-                    <td>120</td>
-                    <td>$15,000</td>
-                </tr>
-                <tr>
-                    <td>February</td>
-                    <td>100</td>
-                    <td>$12,500</td>
-                </tr>
-                <tr>
-                    <td>March</td>
-                    <td>90</td>
-                    <td>$10,000</td>
-                </tr>
-                <!-- Add more months as needed -->
-            </tbody>
-        </table>
-
-        <h3>Total Donations Till Date</h3>
-        <p class="total"><strong>Total Number of Donations:</strong> 2100</p>
-        <p class="total"><strong>Total Donation Amount:</strong> $250,000</p>
-    </section>
-
-    <section>
-        <h2>How to Donate</h2>
-        <img src="path-to-donation-image.jpg" alt="Donate to the School">
-        <p>You can help support ABC School by making a donation. Every contribution helps us continue providing quality education to children in need. Visit our donation page or contact us for more information on how you can get involved.</p>
-        <a href="payment.html" class="btn">Donate Now</a>
-    </section>
-
+<!-- Hero Section -->
+<div class="hero">
+    <div>
+        <h1>Empowering Education for a Better Tomorrow</h1>
+        <p>Your support makes a difference in providing quality education to underprivileged children.</p>
+    </div>
 </div>
 
+<!-- About Us Section -->
+<section class="about-us" id="about">
+    <h2>About Our Foundation</h2>
+    <p>
+        The Foundation is dedicated to supporting government schools and providing quality education to children in need. Our mission is to bridge the gap in educational resources by funding school supplies, infrastructure improvements, and extracurricular activities that enhance students' learning experience.
+    </p>
+</section>
+
+<!-- Statistics Section -->
+<section class="statistics">
+    <div class="stat-item">
+        <h3>$500,000</h3>
+        <p>Total Funds Raised</p>
+    </div>
+    <div class="stat-item">
+        <h3>2,000+</h3>
+        <p>Donors</p>
+    </div>
+    <div class="stat-item">
+        <h3>50+</h3>
+        <p>Schools Supported</p>
+    </div>
+</section>
+
+<!-- Fund Information -->
+<section class="fund-info" id="funds">
+    <h2>Funds Till Date</h2>
+    <p class="total-funds">Total Funds Till Date: $100,000</p>
+    <button onclick="location.href='fund-details.html'">View Funds in Detail</button>
+</section>
+
+<!-- Contact Section -->
+<section class="contact-info" id="contact">
+    <h2>Contact Us</h2>
+    <p>Email: foundation@example.com</p>
+    <p>Phone: +1-800-123-4567</p>
+    <p>Address: 123 Charity Street, City, Country</p>
+</section>
+
+<!-- Footer -->
 <footer>
-    <p>&copy; 2024 Foundation School. All rights reserved.</p>
+    <p>&copy; 2024 Foundation Name. All Rights Reserved.</p>
+    <div class="social-icons">
+        <a href="#"><img src="facebook-icon.png" alt="Facebook"></a>
+        <a href="#"><img src="twitter-icon.png" alt="Twitter"></a>
+        <a href="#"><img src="instagram-icon.png" alt="Instagram"></a>
+    </div>
 </footer>
 
 </body>
