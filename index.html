@@ -257,6 +257,85 @@
     .active {
         opacity: 1;
     }
+ /* Feedback & Suggestions Section Styling */
+ .feedback-suggestions {
+        background: linear-gradient(to right, #f5f7fa, #c3cfe2); /* Soft gradient for a clean look */
+        padding: 60px 20px;
+        text-align: center;
+        margin: 50px 0;
+        border-radius: 15px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .feedback-suggestions h2 {
+        font-size: 32px;
+        color: #333;
+        margin-bottom: 20px;
+        font-weight: 700;
+    }
+
+    .feedback-suggestions p {
+        font-size: 18px;
+        color: #555;
+        margin-bottom: 40px;
+        line-height: 1.8;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* Contact options styling */
+    .contact-options {
+        display: flex;
+        justify-content: center;
+        gap: 50px;
+        margin-bottom: 40px;
+    }
+
+    .contact-options .option {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .contact-options .option .icon {
+        width: 40px;
+        margin-bottom: 10px;
+    }
+
+    .contact-options p {
+        font-size: 18px;
+        color: #333;
+    }
+
+    .contact-options a {
+        color: #4CAF50;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    .contact-options a:hover {
+        text-decoration: underline;
+    }
+
+    /* Feedback button */
+    .feedback-button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 15px 30px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 18px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .feedback-button:hover {
+        background-color: #388E3C;
+        transform: translateY(-3px); /* Slight lift on hover for effect */
+    }
 
 
         /* Responsive styling */
@@ -440,13 +519,24 @@
     <p class="total-funds">Total Funds Till Date: $100,000</p>
     <button onclick="location.href='fund-details.html'">View Funds in Detail</button>
 </section>
+<!-- Feedback & Suggestions Section -->
+<section class="feedback-suggestions">
+    <h2>We'd Love to Hear from You!</h2>
+    <p>
+        Your feedback and suggestions are incredibly valuable to us. Help us improve and make a bigger impact!
+        Whether you have an idea or a suggestion, don’t hesitate to reach out.
+    </p>
+    
+    
+
+    <button class="feedback-button" onclick="location.href='#contact'">Contact Us</button>
+</section>
 
 <!-- Contact Section -->
 <section class="contact-info" id="contact">
     <h2>Contact Us</h2>
-    <p>Email: foundation@example.com</p>
-    <p>Phone: +1-800-123-4567</p>
-    <p>Address: 123 Charity Street, City, Country</p>
+    <p>Email: lprashantha987@gmail.com</p>
+    <p>Phone: 9019723839</p>
 </section>
 
 <!-- Footer -->
