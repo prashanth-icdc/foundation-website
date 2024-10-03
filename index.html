@@ -206,6 +206,59 @@
         color: black;
     }
 
+    .hero-slideshow {
+        position: relative;
+        height: 400px;
+        overflow: hidden;
+    }
+
+    .slide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+    }
+
+    .hero-slideshow .slide:nth-child(1) {
+        background-image: url('https://static.vecteezy.com/system/resources/previews/030/626/627/non_2x/the-right-to-access-quality-education-free-photo.jpg'); /* Replace with your image path */
+    }
+
+    .hero-slideshow .slide:nth-child(2) {
+        background-image: url('https://img.freepik.com/premium-photo/asian-girls-school-study-education_662214-8142.jpg?size=626&ext=jpg&ga=GA1.1.2008272138.1727049600&semt=ais_hybrid'); /* Replace with your image path */
+    }
+
+    .hero-slideshow .slide:nth-child(3) {
+        background-image: url('https://t4.ftcdn.net/jpg/06/18/97/67/360_F_618976794_VlTUWhOgzFDMaaY1xTDATLuQTkjzLGyk.jpg'); /* Replace with your image path */
+    }
+
+    .slide .content {
+        color: white;
+        text-align: center;
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .content h1 {
+        font-size: 48px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    .content p {
+        font-size: 20px;
+    }
+
+    .active {
+        opacity: 1;
+    }
+
+
         /* Responsive styling */
         @media (max-width: 768px) {
             .hero h1 {
@@ -298,7 +351,28 @@
                 padding: 6px 12px;
             }
         }
+
+        @media (max-width: 768px) {
+        .content h1 {
+            font-size: 36px;
+        }
+
+        .content p {
+            font-size: 18px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .content h1 {
+            font-size: 28px;
+        }
+
+        .content p {
+            font-size: 16px;
+        }
+    }
     </style>
+    
 </head>
 <body>
 
@@ -315,10 +389,24 @@
 </header>
 
 <!-- Hero Section -->
-<div class="hero">
-    <div>
-        <h1>Empowering Education for a Better Tomorrow</h1>
-        <p>Your support makes a difference in providing quality education to underprivileged children.</p>
+<div class="hero-slideshow">
+    <div class="slide">
+        <div class="content">
+            <h1>Empowering Education for a Better Tomorrow</h1>
+            <p>Your support makes a difference in providing quality education to underprivileged children.</p>
+        </div>
+    </div>
+    <div class="slide">
+        <div class="content">
+            <h1>Invest in the Future</h1>
+            <p>Every donation helps provide essential resources to schools in need.</p>
+        </div>
+    </div>
+    <div class="slide">
+        <div class="content">
+            <h1>Changing Lives through Education</h1>
+            <p>Join us in our mission to give every child a chance to learn and grow.</p>
+        </div>
     </div>
 </div>
 
@@ -362,6 +450,29 @@
 </section>
 
 <!-- Footer -->
+<script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.hero-slideshow .slide');
 
+    function showSlide(index) {
+        slides.forEach((slide, i) => {
+            slide.classList.remove('active');
+            if (i === index) {
+                slide.classList.add('active');
+            }
+        });
+    }
+
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+    }
+
+    // Initial call to show the first slide
+    showSlide(currentSlide);
+
+    // Set interval to change slides every 5 seconds
+    setInterval(nextSlide, 5000);
+</script>
 </body>
 </html>
