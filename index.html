@@ -337,6 +337,33 @@
         transform: translateY(-3px); /* Slight lift on hover for effect */
     }
 
+    .main-content {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+           /* background-color: white;*/
+            /*border-radius: 10px;*/
+           /* box-shadow: 0 4px 15px #f4f1f1;*/
+            text-align: center;
+        }
+
+
+    .donate-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+
+        .donate-button:hover {
+            background-color: #388E3C;
+        }
+
 
         /* Responsive styling */
         @media (max-width: 768px) {
@@ -530,12 +557,16 @@
         Your feedback and suggestions are incredibly valuable to us. Help us improve and make a bigger impact!
         Whether you have an idea or a suggestion, don’t hesitate to reach out.
     </p>
-    <button class="feedback-button" onclick="location.href='#contact'">Contact Us</button>
 
     
 </section>
 
-
+<section class="main-content">
+    <h2>Support Our Mission</h2>
+    <p>Your contributions help us provide quality education and resources to underprivileged children.</p>
+    
+    <a href="donate.html"><button class="donate-button">Donate Now</button></a>
+</section>
 <!-- Contact Section -->
 <section class="contact-info" id="contact">
     <h2>Contact Us</h2>
