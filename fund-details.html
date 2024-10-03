@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funds in Detail - Year-wise Breakdown</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px 10px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-title {
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .chart-container {
+            width: 80%;
+            margin: 50px auto;
+            text-align: center;
+        }
+
+        .chart-container h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #4CAF50;
+        }
+
+        .chart-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .chart {
+            width: 45%;
+            margin: 20px;
+        }
+
+        .table-section {
+            width: 80%;
+            margin: 0 auto;
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        .fund-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+        }
+
+        .fund-table th, .fund-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .fund-table th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .fund-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .fund-table tr:hover {
+            background-color: #ddd;
+        }
+
+        .view-selector {
+            margin: 20px 0;
+            font-size: 18px;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .dropdown {
+            width: 200px;
+            font-size: 18px;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-title">Funds in Detail - Year-wise Breakdown</div>
+</header>
+
+<section class="chart-container">
+    <h2 id="chartTitle">Total Funds Raised Per Year</h2>
+    <div class="chart-wrapper">
+        <div class="chart">
+            <canvas id="yearlyBarChart"></canvas>
+        </div>
+        <div class="chart">
+            <canvas id="yearlyPieChart"></canvas>
+        </div>
+    </div>
+</section>
+
+<section class="table-section">
+    <h2 id="tableTitle">Year-wise and Monthly Breakdown of Funds</h2>
+
+    <!-- Dropdown to select year -->
+    <select id="yearSelector" class="dropdown">
+        <option value="none">Select Year</option>
+        <option value="2022">2022</option>
+        <option value="2023">2023</option>
+        <option value="2024">2024</option>
+    </select>
+
+    <table id="fundsTable" class="fund-table">
+        <thead>
+            <tr>
+                <th>Year</th>
+                <th>Month</th>
+                <th>Funds Raised</th>
+            </tr>
+        </thead>
+        <tbody id="tableBody">
+            <!-- Data will be dynamically populated here -->
+        </tbody>
+        <tfoot>
+            <tr>
+                <th colspan="2">Total Funds Raised</th>
+                <th id="totalFunds">$0</th>
+            </tr>
+        </tfoot>
+    </table>
+</section>
+
+<footer>
+    <p>&copy; 2024 Foundation Name. All Rights Reserved.</p>
+</footer>
+
+<script>
+    const yearlyData = {
+        '2022': {
+            months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+            funds: [10000, 12000, 15000, 18000, 20000, 22000, 25000, 27000, 30000, 32000, 35000, 37000],
+            total: 273000
+        },
+        '2023': {
+            months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+            funds: [12000, 14000, 17000, 19000, 22000, 24000, 27000, 30000, 33000, 36000, 38000, 40000],
+            total: 315000
+        },
+        '2024': {
+            months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+            funds: [15000, 16000, 18000, 20000, 23000, 25000, 28000, 31000, 34000, 37000, 40000, 45000],
+            total: 335000
+        }
+    };
+
+    const yearLabels = Object.keys(yearlyData);
+    const yearTotals = yearLabels.map(year => yearlyData[year].total);
+
+    const barCtx = document.getElementById('yearlyBarChart').getContext('2d');
+    const pieCtx = document.getElementById('yearlyPieChart').getContext('2d');
+
+    // Create bar chart for total funds raised per year
+    const yearlyBarChart = new Chart(barCtx, {
+        type: 'bar',
+        data: {
+            labels: yearLabels,
+            datasets: [{
+                label: 'Total Funds Raised ($)',
+                data: yearTotals,
+                backgroundColor: '#4CAF50',
+                borderColor: '#388E3C',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    // Create pie chart for total funds raised per year
+    const yearlyPieChart = new Chart(pieCtx, {
+        type: 'pie',
+        data: {
+            labels: yearLabels,
+            datasets: [{
+                data: yearTotals,
+                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56']
+            }]
+        },
+        options: {
+            responsive: true
+        }
+    });
+
+    // Handle year selection from dropdown
+    const yearSelector = document.getElementById('yearSelector');
+    const tableBody = document.getElementById('tableBody');
+    const totalFundsCell = document.getElementById('totalFunds');
+    const chartTitle = document.getElementById('chartTitle');
+    const tableTitle = document.getElementById('tableTitle');
+
+    yearSelector.addEventListener('change', function () {
+        const selectedYear = this.value;
+        tableBody.innerHTML = ''; // Clear existing data
+        let totalFunds = 0;
+
+        if (selectedYear === 'none') {
+            // Display total funds raised for all years
+            chartTitle.textContent = 'Total Funds Raised Per Year';
+            tableTitle.textContent = 'Year-wise Total Funds Raised';
+            
+            yearLabels.forEach(year => {
+                const row = `<tr>
+                                <td>${year}</td>
+                                <td>Total</td>
+                                <td>$${yearlyData[year].total.toLocaleString()}</td>
+                             </tr>`;
+                tableBody.innerHTML += row;
+                totalFunds += yearlyData[year].total;
+            });
+        } else {
+            // Display month-wise breakdown for the selected year
+            chartTitle.textContent = `Total Funds Raised in ${selectedYear}`;
+            tableTitle.textContent = `${selectedYear} Monthly Breakdown of Funds`;
+
+            yearlyData[selectedYear].months.forEach((month, index) => {
+                const row = `<tr>
+                                <td>${selectedYear}</td>
+                                <td>${month}</td>
+                                <td>$${yearlyData[selectedYear].funds[index].toLocaleString()}</td>
+                             </tr>`;
+                tableBody.innerHTML += row;
+                totalFunds += yearlyData[selectedYear].funds[index];
+            });
+        }
+
+        // Update total funds in the footer
+        totalFundsCell.textContent = `$${totalFunds.toLocaleString()}`;
+    });
+
+    // Initialize with 'none' (show total funds year-wise)
+    yearSelector.value = 'none';
+    yearSelector.dispatchEvent(new Event('change')); // Trigger change event to populate the table initially
+</script>
+
+</body>
+</html>
